@@ -1,5 +1,6 @@
-import menu
-import fightable
+from lib import menu, fightable, hero
+from lib.mobs import mob
+from lib.mobs.goblin import Goblin
 
 def main():
     print("Welcome to my Dugeon game")
@@ -19,12 +20,12 @@ def main():
 
 def gameLoop():
     print("We are nwo playing the game")
-    player = fightable.Hero()
+    player = hero.Hero()
 
     # Big game loop
     while player.isAlive():
 
-        goblin = fightable.Mob()
+        goblin = Goblin()
 
         # Our fighting loop
         while player.isAlive() and goblin.isAlive():

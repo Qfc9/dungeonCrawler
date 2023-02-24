@@ -1,7 +1,7 @@
 # Player * DONE
 # Mobs * DONE 
 # Bosses *
-# Drop loot KINDA
+# Drop loot DONE
 # weapons * DONE
 # xp?
 # combact, lots of gore ? DONE
