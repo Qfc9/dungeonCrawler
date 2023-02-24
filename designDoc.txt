@@ -1,27 +1,27 @@
-# Player *
-# Mobs * 
+# Player * DONE
+# Mobs * DONE 
 # Bosses *
-# Drop loot ?
-# weapons *
+# Drop loot KINDA
+# weapons * DONE
 # xp?
-# combact, lots of gore ?
+# combact, lots of gore ? DONE
 # scoring system (dmg done, dmg taken, levels completed) ?
 # level system (for the floors) ?
-# main menu *
+# main menu * DONE
 
 
-# Player starts the game
-# Menu diplays for the user
-#     - start game
-#     - view scores
-#     - quit game
+# Player starts the game DONE
+# Menu diplays for the user DONE
+#     - start game DONE
+#     - view scores DONE
+#     - quit game DONE
 
-# If they start the game, start the game loop
+# If they start the game, start the game loop DONE
     # load the floor
-    # spawn the enemy
-    # fight the enemy
-    # if enemy if dead
-    #     then loot enemy
+    # spawn the enemy DONE
+    # fight the enemy DONE
+    # if enemy if dead DONE
+    #     then loot enemy DONE
     #     let player use any items
     # If player died
         # saving scores
