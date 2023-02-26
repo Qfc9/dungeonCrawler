@@ -1,9 +1,12 @@
 from lib import menu, fightable, hero
 from lib.mobs import mob
 from lib.mobs.goblin import Goblin
-from lib.mobs.tree import TreeBoss
+from lib.mobs.tree import TreeBoss, SunBoss, MoonBoss
+from lib.weapons.weapon import Weapon
+from lib.consumables.comsumable import Consumable
+import random
 
-def main():
+def main(debug=False):
     print("Welcome to my Dugeon game")
 
     mainMenu = menu.Menu()
@@ -32,8 +35,13 @@ def gameLoop():
         print("Level {}".format(level))
         print("Player's health is currently {}HP".format(player.curHealth))
 
+        # Boss with spawn every 3 levels, and not on level 3
         if level % 3 == 0 and level != 0:
-            enemy = TreeBoss()
+            # bosses = [TreeBoss(), SunBoss(), MoonBoss()]
+
+            # enemy = bosses[random.randint(0, len(bosses))]
+
+            enemy = random.choice([TreeBoss(), SunBoss(), MoonBoss()])
         else:
             enemy = Goblin()
 
@@ -58,7 +66,7 @@ def gameLoop():
                 # Adding item, function to execute on selection, and which item should be taken out
                 lootMenu.addMenuItem(item.name, enemy.inventory.takeOut, idx)
 
-            # Display 
+            # Display Menu 
             lootMenu.displayMenu()
 
             # Get user input
@@ -68,8 +76,20 @@ def gameLoop():
             player.inventory.add(lootMenu.runItem(userInput))
 
         print("Player's Inventory")
-        for item in player.inventory.contains:
-            print(item.name)
+        playerInventoryMenu = menu.Menu()
+
+        for idx, item in enumerate(player.inventory.contains):
+            # print("is this working?")
+            if isinstance(item, Weapon):
+                # print("is weapon?")
+                playerInventoryMenu.addMenuItem(item.name, player.switchWeapon, idx)
+            elif isinstance(item, Consumable):
+                # print("is consumable?")
+                playerInventoryMenu.addMenuItem(item.name, item.consume, player)
+
+        playerInventoryMenu.displayMenu()
+        userInput = input("Select> ")
+        playerInventoryMenu.runItem(userInput)
 
         print("\n")
 

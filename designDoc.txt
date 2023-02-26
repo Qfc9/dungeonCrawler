@@ -1,6 +1,6 @@
 # Player * DONE
 # Mobs * DONE 
-# Bosses *
+# Bosses * DONE
 # Drop loot DONE
 # weapons * DONE
 # xp?

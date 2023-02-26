@@ -13,8 +13,18 @@ class Hero(Fightable):
         # retrieving that weapon we just put in
         self.primaryWeapon: Weapon = self.inventory.takeOut(0)
 
+    def switchWeapon(self, inventoryIdx):
+        self.inventory.add(self.primaryWeapon)
+        self.primaryWeapon = self.inventory.takeOut(inventoryIdx)
+
     def attack(self):
         if self.primaryWeapon:
             return self.baseAtk + self.primaryWeapon.dmg
         
         return self.baseAtk
+    
+    def heal(self, healAmount):
+        if (self.curHealth + healAmount) > self.maxHealth:
+            self.curHealth = self.maxHealth
+        else:
+            self.curHealth += healAmount
