@@ -5,6 +5,8 @@ from lib.mobs.tree import TreeBoss, SunBoss, MoonBoss
 from lib.weapons.weapon import Weapon
 from lib.consumables.comsumable import Consumable
 import random
+import psycopg2
+import datetime
 
 def main(debug=False):
     print("Welcome to my Dugeon game")
@@ -97,14 +99,22 @@ def gameLoop():
 
     print("\nYou died")
 
+    name = ""
+    while not name.isalpha():
+        print("Enter name to be saved on the highscore database")
+        name = input("Enter > ")
+
+        if not name.isalpha():
+            print("You have me bad bad input")
+
     # Connect to your postgres DB
-    conn = dbConnect()
+    conn = psycopg2.connect("dbname=postgres user=postgres password=password")
     # Open a cursor to perform database operations
     cur = conn.cursor()
 
     cur.execute("""
-        INSERT INTO public.highscore (name, score, timestamp) VALUES(%s, %s, %s)
-    """, [name, scoreCurrent, str(datetime.datetime.now())])
+        INSERT INTO public.highscoredc (name, level, timestamp) VALUES(%s, %s, %s)
+    """, [name, level, str(datetime.datetime.now())])
     conn.commit()
 
     conn.close()

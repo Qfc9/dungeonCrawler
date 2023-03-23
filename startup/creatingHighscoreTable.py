@@ -11,13 +11,13 @@ try:
         CREATE TABLE public.highscoreDC (
             id serial NOT NULL,
             "name" varchar NOT NULL,
-            score int NOT NULL,
+            level int NOT NULL,
             "timestamp" timestamp NOT NULL
         );
 
         ALTER TABLE public.highscoreDC ADD CONSTRAINT highscoreDC_pk PRIMARY KEY (id);
         
-        CREATE INDEX highscoreDC_score_idx ON public.highscoreDC (score);
+        CREATE INDEX highscoreDC_level_idx ON public.highscoreDC (level);
     """)
 
     # Push our changes to the table
